@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tofu Sandwich Express</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
+  </head>
+  <body>
+    <div class="fullpage container-fluid text-center">
+      <h1>Tofu Sandwich Express</h1>
+      <p>Welcome to Tofu Sandwich Express</p>
+
+      <div id="result-box">
+        <div id="title">
+          <h1>Title</h1>
+        </div>
+        <div id="result">
+          <p>
+            result #1
+          </p>
+          <p>
+            result #2
+          </p>
+          <p>
+            result #3
+          </p>
+        </div>
+      </div>
+
+      <br />
+      <div id="basic-select">
+        <h2>SELECT * FROM</h2>
+        <div class="btn-group" role="group" aria-label="...">
+         <button type="button" class="btn basic btn-default">Composes</button>
+         <button type="button" class="btn basic btn-default">Contains</button>
+         <button type="button" class="btn basic btn-default">Customer</button>
+         <button type="button" class="btn basic btn-default">Delivers</button>
+         <button type="button" class="btn basic btn-default">Drink</button>
+         <button type="button" class="btn basic btn-default">Employee</button>
+         <button type="button" class="btn basic btn-default">Employs</button>
+         <button type="button" class="btn basic btn-default">Fills</button>
+         <button type="button" class="btn basic btn-default">Food_Item</button>
+         <button type="button" class="btn basic btn-default">Meat</button>
+        </div>
+        <div class="btn-group" role="group" aria-label="...">
+         <button type="button" class="btn basic btn-default">Orders</button>
+         <button type="button" class="btn basic btn-default">Places</button>
+         <button type="button" class="btn basic btn-default">Processes</button>
+         <button type="button" class="btn basic btn-default">Sandwich</button>
+         <button type="button" class="btn basic btn-default">Sauce</button>
+         <button type="button" class="btn basic btn-default">Side</button>
+         <button type="button" class="btn basic btn-default">Store</button>
+         <button type="button" class="btn basic btn-default">Tops</button>
+         <button type="button" class="btn basic btn-default">Veggies</button>
+         <button type="button" class="btn basic btn-default">Works_On</button>
+        </div>
+      </div>
+
+      <div id="select-order-based-on-status">
+        <h2>Get order information based on status</h2>
+        <div class="btn-group" role="group" aria-label="...">
+         <button type="button" class="btn status btn-default">Completed</button>
+         <button type="button" class="btn status btn-default">In Progress</button>
+         <button type="button" class="btn status btn-default">Paid</button>
+         <button type="button" class="btn status btn-default">Empty</button>
+        </div>
+      </div>
+
+      <div id="select-order-based-on-date">
+        <h2>Get order information based on date</h2>
+        <div class="btn-group" role="group" aria-label="...">
+          <div class="form-inline">
+            <select id="day" class="form-control">
+              <option value="01">1</option>
+              <option value="02">2</option>
+              <option value="03">3</option>
+              <option value="04">4</option>
+              <option value="05">5</option>
+              <option value="06">6</option>
+              <option value="07">7</option>
+              <option value="08">8</option>
+              <option value="09">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+
+            </select>
+
+            <select id="month" class="form-control">
+              <option value="01">January</option>
+              <option value="02">February</option>
+              <option value="03">March</option>
+              <option value="04">April</option>
+              <option value="05">May</option>
+              <option value="06">June</option>
+              <option value="07">July</option>
+              <option value="08">August</option>
+              <option value="09">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+            </select>
+
+            <select id="year" class="form-control">
+              <option value="2014">2014</option>
+              <option value="2015">2015</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+            </select>
+
+            <br /><br />
+            <button id="get-all-orders-date-btn" type="submit" class="btn btn-primary">Get all orders based on date</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="select-all-orders-for-a-customer">
+        <h2>Get all orders for a customer</h2>
+          <div class="form-group">
+            <select id="get-all-orders-email" class="form-control">
+
+              {{#customers}}
+              <option value="{{email}}">{{email}}</option>
+              {{/customers}}
+
+            </select>
+            <br />
+            <button id="get-all-orders-btn" type="submit" class="btn btn-primary">Get all orders</button>
+          </div>
+      </div>
+
+      <div id="insert">
+        <form method="post" action="/create/food_item">
+          <h2>Create a new Food_Item</h2>
+          <div class="form-group">
+            <label for="foodid">Food ID</label>
+            <input type="text" class="form-control" name="foodid" id="foodid" placeholder="Banana Sandwich">
+            <label for="size">Size</label>
+            <input type="text" class="form-control" name="size" id="size" placeholder="large">
+            <label for="price">Price</label>
+            <input type="number" step="any" class="form-control" name="price" id="price" placeholder="3.40" maxlength="10">
+
+            <label class="with_cheese">
+              With Cheese? <input type="checkbox" name="with_cheese" id="with_cheese" value="true" checked>
+            </label>
+
+            <label class="with_ice hidden">
+              With Ice? <input type="checkbox" name="with_ice" id="with_ice" value="true" checked>
+            </label>
+
+
+            <br />
+            <label class="radio-inline">
+              <input type="radio" name="type" id="sandwich" value="sandwich" checked> Sandwich
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="type" id="drink" value="drink"> Drink
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="type" id="side" value="side"> Side
+            </label>
+            <br /><br />
+            <button type="submit" class="btn btn-primary">Create New Food Item</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="discount">
+        <h2>Discount Food_Items</h2>
+        <form method="post" action="/modify/food_item">
+          <div class="form-group">
+
+            <select name="food_item_discount_select" id="food_item_discount_select" class="form-control">
+              <option value="food_item">All Food_Items</option>
+              <option value="sandwich">All Sandwiches</option>
+              <option value="side">All Sides</option>
+              <option value="drink">All Drinks</option>
+            </select>
+            <label for="size">Discount (%)</label>
+            <input type="number" class="form-control" name="percent" id="percent" placeholder="20">
+            <br /><br />
+            <button type="submit" class="btn btn-primary">Apply Discount</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </body>
+
+  <script>
+    $(document).ready(function() {
+
+      $(".basic").click(function(e) {
+
+        var name = $(e.target).text();
+
+        $.get( "/select/" + name, function( data ) {
+
+          console.log(data);
+          var html = "";
+          for (i = 0; i < data.length; i++) {
+            html = html + "<p>" + JSON.stringify(data[i]) + "</p>";
+          }
+          $("#title").html("<h1>" + name + "</h1>");
+          $( "#result" ).html(html);
+        });
+      })
+
+      $(".status").click(function(e) {
+
+        var status = $(e.target).text();
+
+        $.get( "/select/orders/" + status, function( data ) {
+
+          console.log(data);
+          var html = "";
+          for (i = 0; i < data.length; i++) {
+            html = html + "<p>" + JSON.stringify(data[i]) + "</p>";
+          }
+          $("#title").html("<h1>" + name + "</h1>");
+          $( "#result" ).html(html);
+        });
+      })
+
+      $("#get-all-orders-btn").click(function() {
+
+        var email = $("#get-all-orders-email").val();
+        var emailParsed = email.replace('@', '-at-')
+
+        $.get( "/select/" + emailParsed + "/orders", function( data ) {
+
+          console.log(data);
+          var html = "";
+          for (i = 0; i < data.length; i++) {
+            html = html + "<p>" + JSON.stringify(data[i]) + "</p>";
+          }
+          $("#title").html("<h1>" + "All orders for " + email + "</h1>");
+          $( "#result" ).html(html);
+        });
+      })
+
+      $("#get-all-orders-date-btn").click(function() {
+
+        var day = $("#day").val();
+        var month = $("#month").val();
+        var year = $("#year").val();
+
+        var date = year + "-" + month + "-" + day;
+
+        $.get( "/select/orders/date/" + date, function( data ) {
+
+          console.log(data);
+          var html = "";
+          for (i = 0; i < data.length; i++) {
+            html = html + "<p>" + JSON.stringify(data[i]) + "</p>";
+          }
+          $("#title").html("<h1>" + "All orders on " + date + "</h1>");
+          $( "#result" ).html(html);
+        });
+      })
+
+      $("#sandwich").click(function() {
+        $(".with_ice").addClass("hidden");
+        $(".with_cheese").removeClass("hidden");
+      });
+
+      $("#drink").click(function() {
+        $(".with_ice").removeClass("hidden");
+        $(".with_cheese").addClass("hidden");
+      });
+
+      $("#side").click(function() {
+        $(".with_ice").addClass("hidden");
+        $(".with_cheese").addClass("hidden");
+      });
+
+    });
+  </script>
+</html>
