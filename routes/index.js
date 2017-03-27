@@ -89,44 +89,51 @@ router.post('/create/food_item', function(req, res, next) {
   size = req.body.size;
   price = req.body.price;
 
-  query("SELECT * FROM Food_Item WHERE foodid = '" + foodid + "' AND size = '" + size  + "'", function(data) {
-    console.log(data);
-    if (foodid && size && price && data.length == 0) {
-      if(req.body.type == "sandwich") {
-        with_cheese = req.body.with_cheese
+  if (isValid(foodid) && isValid(size)) {
+    query("SELECT * FROM Food_Item WHERE foodid = '" + foodid + "' AND size = '" + size  + "'", function(data) {
+      console.log(data);
+      if (foodid && size && price && data.length == 0) {
+        if(req.body.type == "sandwich") {
+          with_cheese = req.body.with_cheese
 
-        if (!with_cheese) {
-          with_cheese = "false";
+          if (!with_cheese) {
+            with_cheese = "false";
+          }
+
+          query("INSERT INTO Sandwich VALUES (\'" + foodid + "\',\'" + size + "\'," + price + "," + with_cheese + ")", function(rows) {
+            console.log(rows);
+            res.send('Successfully created a ' + size + ' ' + foodid + 'sandwich!');
+          })
+        } else if (req.body.type == "drink") {
+          with_ice = req.body.with_ice
+
+          if (!with_ice) {
+            with_ice = "false";
+          }
+
+          query("INSERT INTO Drink VALUES (\'" + foodid + "\',\'" + size + "\'," + price + "," + with_ice + ")", function(rows) {
+            console.log(rows);
+            res.send('Successfully created a ' + size + ' ' + foodid + 'drink!');
+          })
+        } else if (req.body.type == "side") {
+          query("INSERT INTO Side VALUES (\'" + foodid + "\',\'" + size + "\'," + price  + ")", function(rows) {
+            console.log(rows);
+            res.send('Successfully created a ' + size + ' ' + foodid + 'side!');
+          })
         }
-
-        query("INSERT INTO Sandwich VALUES (\'" + foodid + "\',\'" + size + "\'," + price + "," + with_cheese + ")", function(rows) {
-          console.log(rows);
-          res.redirect('/');
-        })
-      } else if (req.body.type == "drink") {
-        with_ice = req.body.with_ice
-
-        if (!with_ice) {
-          with_ice = "false";
-        }
-
-        query("INSERT INTO Drink VALUES (\'" + foodid + "\',\'" + size + "\'," + price + "," + with_ice + ")", function(rows) {
-          console.log(rows);
-          res.redirect('/');
-        })
-      } else if (req.body.type == "side") {
-        query("INSERT INTO Side VALUES (\'" + foodid + "\',\'" + size + "\'," + price  + ")", function(rows) {
-          console.log(rows);
-          res.redirect('/');
-        })
+      } else {
+        res.send('Error. Invalid input, missing data or food_item already exists. You entered: ' + JSON.stringify(req.body));
       }
-    } else {
-      res.send('Error. Invalid input, missing data or food_item already exists. You entered: ' + JSON.stringify(req.body));
-    }
-  });
-
+    });
+  } else {
+    res.send('Error. Invalid input. We do not allow special characters. You entered: ' + JSON.stringify(req.body));
+  }
 
 })
+
+function isValid(str){
+ return !/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(str);
+}
 
 function query(q, callback) {
   var query = pgclient.query(q);
